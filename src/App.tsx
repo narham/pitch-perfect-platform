@@ -12,6 +12,7 @@ import TeamDashboard from "./pages/team/TeamDashboard";
 import PlayerDashboard from "./pages/player/PlayerDashboard";
 import RefereeDashboard from "./pages/referee/RefereeDashboard";
 import ScoutDashboard from "./pages/scout/ScoutDashboard";
+import CompetitionCreatePage from "./pages/eo/CompetitionCreatePage";
 
 const queryClient = new QueryClient();
 
