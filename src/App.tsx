@@ -12,6 +12,7 @@ import TeamDashboard from "./pages/team/TeamDashboard";
 import PlayerDashboard from "./pages/player/PlayerDashboard";
 import RefereeDashboard from "./pages/referee/RefereeDashboard";
 import ScoutDashboard from "./pages/scout/ScoutDashboard";
+import CompetitionCreatePage from "./pages/eo/CompetitionCreatePage";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ const App = () => (
 
           {/* EO Routes */}
           <Route path="/eo" element={<EODashboard />} />
+          <Route path="/eo/competitions/create" element={<CompetitionCreatePage />} />
           <Route path="/eo/competitions" element={<EODashboard />} />
           <Route path="/eo/matches" element={<EODashboard />} />
           <Route path="/eo/venues" element={<EODashboard />} />
