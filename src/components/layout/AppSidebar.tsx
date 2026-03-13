@@ -238,18 +238,36 @@ export function AppSidebar({ role }: AppSidebarProps) {
       </SidebarContent>
 
       <SidebarFooter className="border-t border-sidebar-border p-3">
-        {!collapsed && (
-          <div className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
-              <span className="text-xs font-semibold text-primary">AD</span>
-            </div>
-            <div className="min-w-0">
-              <p className="text-sm font-medium truncate">Admin User</p>
-              <p className="text-caption truncate">admin@fms.com</p>
-            </div>
-          </div>
-        )}
+        <SidebarFooterContent collapsed={collapsed} />
       </SidebarFooter>
     </Sidebar>
+  );
+}
+
+function SidebarFooterContent({ collapsed }: { collapsed: boolean }) {
+  const { user, signOut } = useAuth();
+
+  const initials = user?.profile?.full_name
+    ? user.profile.full_name.split(" ").map((n) => n[0]).join("").toUpperCase().slice(0, 2)
+    : user?.email?.slice(0, 2).toUpperCase() || "??";
+
+  return (
+    <div className="space-y-2">
+      {!collapsed && (
+        <div className="flex items-center gap-2">
+          <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+            <span className="text-xs font-semibold text-primary">{initials}</span>
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="text-sm font-medium truncate">{user?.profile?.full_name || "User"}</p>
+            <p className="text-caption truncate">{user?.email}</p>
+          </div>
+        </div>
+      )}
+      <Button variant="ghost" size={collapsed ? "icon" : "sm"} onClick={signOut} className="w-full text-muted-foreground hover:text-destructive">
+        <LogOut className="h-4 w-4" />
+        {!collapsed && <span className="ml-2">Sign out</span>}
+      </Button>
+    </div>
   );
 }
