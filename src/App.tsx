@@ -38,6 +38,7 @@ const App = () => (
 
           {/* EO Routes */}
           <Route path="/eo" element={<EODashboard />} />
+          <Route path="/eo/competitions/create" element={<CompetitionCreatePage />} />
           <Route path="/eo/competitions" element={<EODashboard />} />
           <Route path="/eo/matches" element={<EODashboard />} />
           <Route path="/eo/venues" element={<EODashboard />} />
